@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SoccerLab - محاكي مباريات كرة القدم</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#0f172a; color:#e2e8f0; text-align:center; padding:20px; }
+    button { padding:10px 20px; font-size:16px; border-radius:8px; background:#1e3a8a; color:#fff; border:none; cursor:pointer; }
+    button:hover { background:#2563eb; }
+    #result { margin-top:20px; font-size:20px; white-space: pre-line; }
+  </style>
+</head>
+<body>
+  <h1>⚽ SoccerLab</h1>
+  <p>اختر فريقين واضغط "حاكي المباراة" لتوليد نتيجة متوقعة</p>
+
+  <select id="team1">
+    <option>برشلونة</option>
+    <option>ريال مدريد</option>
+    <option>مانشستر سيتي</option>
+    <option>بايرن ميونخ</option>
+    <option>ليفربول</option>
+    <option>ميلان</option>
+  </select>
+  ضد
+  <select id="team2">
+    <option>ريال مدريد</option>
+    <option>برشلونة</option>
+    <option>مانشستر سيتي</option>
+    <option>بايرن ميونخ</option>
+    <option>ليفربول</option>
+    <option>ميلان</option>
+  </select>
+
+  <br><br>
+  <button onclick="simulate()">🎲 حاكي المباراة</button>
+
+  <p id="result"></p>
+
+  <script>
+    function simulate() {
+      const t1 = document.getElementById('team1').value;
+      const t2 = document.getElementById('team2').value;
+      const g1 = Math.floor(Math.random() * 5);
+      const g2 = Math.floor(Math.random() * 5);
+      let outcome = '';
+      if (g1 > g2) outcome = 'فاز ' + t1;
+      else if (g1 < g2) outcome = 'فاز ' + t2;
+      else outcome = 'تعادل';
+      document.getElementById('result').innerText = `${t1} ${g1} - ${g2} ${t2}\nنتيجة: ${outcome}`;
+    }
+  </script>
+</body>
+</html>
